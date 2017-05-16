@@ -42,7 +42,10 @@ class JFormFieldHidden extends JFormField
 		// Initialize JavaScript field attributes.
 		$onchange = $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
 
+		// Initialize JavaScript field data attributes. For eg, data-action-type="click"
+		$dataAttribute = !empty($this->dataAttributeValues) ? ' ' . implode("  ", $this->dataAttributeValues) : '';
+
 		return '<input type="hidden" name="' . $this->name . '" id="' . $this->id . '" value="'
-			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $disabled . $onchange . ' />';
+			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $disabled . $onchange . $dataAttribute . ' />';
 	}
 }

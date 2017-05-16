@@ -296,6 +296,9 @@ class JFormFieldColor extends JFormField
 			// Force LTR input value in RTL, due to display issues with rgba/hex colors
 			$direction    = $lang->isRTL() ? ' dir="ltr" style="text-align:right"' : '';
 
+			// Initialize JavaScript field data attributes. For eg, data-action-type="click"
+			$dataAttribute = !empty($this->dataAttributeValues) ? ' ' . implode("  ", $this->dataAttributeValues) : '';
+
 			// Including fallback code for HTML5 non supported browsers.
 			JHtml::_('jquery.framework');
 			JHtml::_('script', 'system/html5fallback.js', false, true);
@@ -305,7 +308,7 @@ class JFormFieldColor extends JFormField
 			return '<input type="text" name="' . $this->name . '" id="' . $this->id . '"' . ' value="'
 				. htmlspecialchars($color, ENT_COMPAT, 'UTF-8') . '"' . $hint . $class . $position . $control
 				. $readonly . $disabled . $required . $onchange . $autocomplete . $autofocus
-				. $format . $keywords . $direction . $validate . '/>';
+				. $format . $keywords . $direction . $validate . $dataAttribute . '/>';
 		}
 	}
 }

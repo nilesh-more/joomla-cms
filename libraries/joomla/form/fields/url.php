@@ -61,12 +61,15 @@ class JFormFieldUrl extends JFormFieldText
 		// Initialize JavaScript field attributes.
 		$onchange = !empty($this->onchange) ? ' onchange="' . $this->onchange . '"' : '';
 
+		// Initialize JavaScript field data attributes. For eg, data-action-type="click"
+		$dataAttribute = !empty($this->dataAttributeValues) ? ' ' . implode("  ", $this->dataAttributeValues) : '';
+
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
 
 		return '<input ' . $inputType . ' name="' . $this->name . '"' . $class . ' id="' . $this->id . '" value="'
 			. htmlspecialchars(JStringPunycode::urlToUTF8($this->value), ENT_COMPAT, 'UTF-8') . '"' . $size . $disabled . $readonly
-			. $hint . $autocomplete . $autofocus . $spellcheck . $onchange . $maxLength . $required . ' />';
+			. $hint . $autocomplete . $autofocus . $spellcheck . $onchange . $maxLength . $required . $dataAttribute . ' />';
 	}
 }

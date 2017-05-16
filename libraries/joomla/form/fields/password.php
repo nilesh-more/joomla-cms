@@ -156,6 +156,9 @@ class JFormFieldPassword extends JFormField
 		$autocomplete = !$this->autocomplete ? ' autocomplete="off"' : '';
 		$autofocus    = $this->autofocus ? ' autofocus' : '';
 
+		// Initialize JavaScript field data attributes. For eg, data-action-type="click"
+		$dataAttribute = !empty($this->dataAttributeValues) ? ' ' . implode("  ", $this->dataAttributeValues) : '';
+
 		if ($this->meter)
 		{
 			JHtml::_('script', 'system/passwordstrength.js', true, true);
@@ -180,6 +183,6 @@ class JFormFieldPassword extends JFormField
 
 		return '<input type="password" name="' . $this->name . '" id="' . $this->id . '"' .
 			' value="' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $hint . $autocomplete .
-			$class . $readonly . $disabled . $size . $maxLength . $required . $autofocus . ' />';
+			$class . $readonly . $disabled . $size . $maxLength . $required . $autofocus . $dataAttribute . ' />';
 	}
 }
