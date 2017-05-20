@@ -184,9 +184,6 @@ class JFormFieldText extends JFormField
 		// Initialize JavaScript field attributes.
 		$onchange = !empty($this->onchange) ? ' onchange="' . $this->onchange . '"' : '';
 
-		// Initialize JavaScript field data attributes. For eg, data-action-type="click"
-		$dataAttribute = !empty($this->dataAttributeValues) ? ' ' . implode("  ", $this->dataAttributeValues) : '';
-
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
@@ -218,7 +215,7 @@ class JFormFieldText extends JFormField
 
 		$html[] = '<input type="text" name="' . $this->name . '" id="' . $this->id . '"' . $dirname . ' value="'
 			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $size . $disabled . $readonly . $list
-			. $hint . $onchange . $maxLength . $required . $autocomplete . $autofocus . $spellcheck . $inputmode . $pattern . $dataAttribute . ' />';
+			. $hint . $onchange . $maxLength . $required . $autocomplete . $autofocus . $spellcheck . $inputmode . $pattern . ' />';
 		$html[] = $datalist;
 
 		return implode($html);

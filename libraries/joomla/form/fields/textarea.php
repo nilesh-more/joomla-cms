@@ -136,7 +136,7 @@ class JFormFieldTextarea extends JFormField
 	protected function getInput()
 	{
 		// Translate placeholder text
-		$hint         = $this->translateHint ? JText::_($this->hint) : $this->hint;
+		$hint = $this->translateHint ? JText::_($this->hint) : $this->hint;
 
 		// Initialize some field attributes.
 		$class        = !empty($this->class) ? ' class="' . $this->class . '"' : '';
@@ -153,18 +153,15 @@ class JFormFieldTextarea extends JFormField
 		$maxlength    = $this->maxlength ? ' maxlength="' . $this->maxlength . '"' : '';
 
 		// Initialize JavaScript field attributes.
-		$onchange      = $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
-		$onclick       = $this->onclick ? ' onclick="' . $this->onclick . '"' : '';
-
-		// Initialize JavaScript field data attributes. For eg, data-action-type="click"
-		$dataAttribute = !empty($this->dataAttributeValues) ? ' ' . implode("  ", $this->dataAttributeValues) : '';
+		$onchange = $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
+		$onclick = $this->onclick ? ' onclick="' . $this->onclick . '"' : '';
 
 		// Including fallback code for HTML5 non supported browsers.
 		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
 
 		return '<textarea name="' . $this->name . '" id="' . $this->id . '"' . $columns . $rows . $class
-			. $hint . $disabled . $readonly . $onchange . $onclick . $required . $autocomplete . $autofocus . $spellcheck . $maxlength . $dataAttribute . ' >'
+			. $hint . $disabled . $readonly . $onchange . $onclick . $required . $autocomplete . $autofocus . $spellcheck . $maxlength . ' >'
 			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 	}
 }
